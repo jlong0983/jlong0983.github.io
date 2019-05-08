@@ -146,6 +146,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-如何编译大雕的 OpenWrt 固件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/如何编译大雕的 OpenWrt 固件/">��α������ OpenWrt �̼�</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/如何编译大雕的 OpenWrt 固件/" class="archive-article-date">
+  	<time datetime="2019-05-08T07:33:38.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ע�⣺</p>
+<ol>
+<li>��Ҫ�� root �û� git �ͱ��룡����</li>
+<li>�����û�����ǰ���׼��������</li>
+<li>Ĭ�ϵ�½IP 192.168.1.1, ���� password</li>
+</ol>
+<h3 id="������������"><a href="#������������" class="headerlink" title="������������:"></a>������������:</h3><p>����װ�� Ubuntu 64bit���Ƽ�  Ubuntu  14 LTS x64</p>
+<p>����������</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>Ȼ������</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint</span><br></pre></td></tr></table></figure>
+<p>���غ�Դ����</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/coolsnowwolf/lede</span><br></pre></td></tr></table></figure>
+<p>Ȼ�� cd lede ����Ŀ¼</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./scripts/feeds update -a </span><br><span class="line">./scripts/feeds install -a</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<p>���ѡ����Ҫ��·�ɣ�����</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j1 V=s</span><br></pre></td></tr></table></figure>
+<p>��-j1�������߳�������һ�α����Ƽ��õ��̣߳������뾡��ȫ�ֿ�ѧ���������ɿ�ʼ������Ҫ�Ĺ̼��ˡ�</p>
+<p>������ɺ�̼������/lede/bin/targets</p>
+<h3 id="�Ժ���α��룺"><a href="#�Ժ���α��룺" class="headerlink" title="�Ժ���α��룺"></a>�Ժ���α��룺</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br><span class="line">rm -rf ./tmp &amp;&amp; rm -rf .config</span><br><span class="line">make menuconfig</span><br><span class="line">make -jn V=s</span><br></pre></td></tr></table></figure>
+<h3 id="�����µ�ַ�����Զ���gfwlist����߳ɹ��ʣ�"><a href="#�����µ�ַ�����Զ���gfwlist����߳ɹ��ʣ�" class="headerlink" title="�����µ�ַ�����Զ���gfwlist����߳ɹ��ʣ�"></a>�����µ�ַ�����Զ���gfwlist����߳ɹ��ʣ�</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h12.io</span><br><span class="line">go.starlark.net</span><br><span class="line">golang.org</span><br><span class="line">honnef.co</span><br></pre></td></tr></table></figure>
+<h3 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS:"></a>TIPS:</h3><p>�����л��ںˣ�<br>��LEDEĿ¼/target/linux/�ܹ�/Makefile<br>KERNEL_PATCHVER:=4.9<br>����֧���ں˰汾<br>include/kernel-version.mk</p>
+<p>Դ����ˣ�<br>git log                        �鿴Դ�������־<br>git reset –hard HEAD^         ���˵��ϸ��汾<br>git reset –hard HEAD~3        ���˵�ǰ3���ύ֮ǰ���Դ����ƣ����˵�n���ύ֮ǰ<br>git reset –hard commit_id     �˵�/���� ָ��commit��sha�루�ɵ����Դ���ֱַ�Ӳ�ѯ��</p>
+<p>files�󷨣����ǰ��� �ĺõ����� ֱ�ӱ�����̼�<br>�������ĺô�������������Ҫ�������ã����߻ָ��������ã�ȱʡֵ�������Լ����úõ�����<br>�̻�ĳ���ý̳����ӣ�<br>1.��ȡ·�ɹ̼��µ�\etc\config\network<br>2.�ڱ����LEDE��Ŀ¼�´���filesĿ¼<br>3.������\files\etc\config\network<br>���������꣬network�������Լ����úõ�network��ע����ȡ���ļ�·����Ȩ��Ҫһ��</p>
+<p>һЩ���õ����ã�·����·��</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x 1 jlong0983 jlong0983   512 Apr 11 11:28 files</span><br><span class="line">drwxr-xr-x    1 root     root          1024 Apr 11 06:00 etc</span><br><span class="line">drwxr-xr-x    1 root     root          3072 Apr  9 14:15 config</span><br><span class="line">-rw-------    1 root     root          5790 Apr  9 11:10 firewall</span><br><span class="line">-rw-------    1 root     root           639 Mar 21 14:16 network</span><br><span class="line">-rw-------    1 root     root           754 Apr  7 09:20 ddns</span><br><span class="line">-rw-------    1 root     root           187 Apr 11 14:54 adbyby</span><br><span class="line">-rw-------    1 root     root           245 Apr 11 14:53 pptpd</span><br><span class="line">-rw-------    1 root     root           161 Apr 11 14:50 sfe</span><br><span class="line">-rw-------    1 root     root           158 Apr 16 15:42 flowoffload</span><br><span class="line">-rw-------    1 root     root          1101 Apr 16 16:22 shadowsocksr</span><br><span class="line">-rw-r--r--    1 root     root            11 Apr 16 15:46 google_fu_mode</span><br></pre></td></tr></table></figure>
+<p>�����Ч��make clean����ɾ��/lede/build_dir/target�ܹ�/autocore-1����������ʧ��ͬ����</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/如何编译大雕的 OpenWrt 固件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-学习写MD" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
