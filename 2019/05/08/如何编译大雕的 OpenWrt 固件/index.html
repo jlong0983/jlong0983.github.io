@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://jlong0983.gitee.io">
   <title>如何编译大雕的 OpenWrt 固件 | 我会瘦的</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="注意：  不要用 root 用户 git 和编译！！！ 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1, 密码 password  编译命令如下:首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64 命令行输入 1sudo apt-get update 然后输入 1sudo apt-get -y install build-essential asc">
+  <meta name="description" content="注意: 不要用 root 用户 git 和编译！！！ 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1, 密码 password  编译命令如下:首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64 命令行输入1sudo apt-get update 然后输入1sudo apt-get -y install build-essential asciid">
 <meta name="keywords" content="真的不是减肥博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何编译大雕的 OpenWrt 固件">
 <meta property="og:url" content="http://jlong0983.gitee.io/2019/05/08/如何编译大雕的 OpenWrt 固件/index.html">
 <meta property="og:site_name" content="我会瘦的">
-<meta property="og:description" content="注意：  不要用 root 用户 git 和编译！！！ 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1, 密码 password  编译命令如下:首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64 命令行输入 1sudo apt-get update 然后输入 1sudo apt-get -y install build-essential asc">
+<meta property="og:description" content="注意: 不要用 root 用户 git 和编译！！！ 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1, 密码 password  编译命令如下:首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64 命令行输入1sudo apt-get update 然后输入1sudo apt-get -y install build-essential asciid">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-08T07:37:29.755Z">
+<meta property="og:updated_time" content="2019-05-08T07:44:52.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何编译大雕的 OpenWrt 固件">
-<meta name="twitter:description" content="注意：  不要用 root 用户 git 和编译！！！ 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1, 密码 password  编译命令如下:首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64 命令行输入 1sudo apt-get update 然后输入 1sudo apt-get -y install build-essential asc">
+<meta name="twitter:description" content="注意: 不要用 root 用户 git 和编译！！！ 国内用户编译前最好准备好梯子 默认登陆IP 192.168.1.1, 密码 password  编译命令如下:首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64 命令行输入1sudo apt-get update 然后输入1sudo apt-get -y install build-essential asciid">
   
     <link rel="alternative" href="/atom.xml" title="我会瘦的" type="application/atom+xml">
   
@@ -165,32 +165,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>注意：</p>
-<ol>
+        <h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><ol>
 <li>不要用 root 用户 git 和编译！！！</li>
 <li>国内用户编译前最好准备好梯子</li>
 <li>默认登陆IP 192.168.1.1, 密码 password</li>
 </ol>
 <h3 id="编译命令如下"><a href="#编译命令如下" class="headerlink" title="编译命令如下:"></a>编译命令如下:</h3><p>首先装好 Ubuntu 64bit，推荐  Ubuntu  14 LTS x64</p>
-<p>命令行输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-<p>然后输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint</span><br></pre></td></tr></table></figure>
-<p>下载好源代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/coolsnowwolf/lede</span><br></pre></td></tr></table></figure>
-<p>然后 cd lede 进入目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./scripts/feeds update -a </span><br><span class="line">./scripts/feeds install -a</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
-<p>最后选好你要的路由，输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j1 V=s</span><br></pre></td></tr></table></figure>
-<p>（-j1后面是线程数。第一次编译推荐用单线程，国内请尽量全局科学上网）即可开始编译你要的固件了。</p>
-<p>编译完成后固件输出在/lede/bin/targets</p>
+<p>命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
+<p>然后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint</span><br></pre></td></tr></table></figure></p>
+<p>下载好源代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/coolsnowwolf/lede</span><br></pre></td></tr></table></figure></p>
+<p>然后 cd lede 进入目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./scripts/feeds update -a </span><br><span class="line">./scripts/feeds install -a</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure></p>
+<p>最后选好你要的路由，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j1 V=s</span><br></pre></td></tr></table></figure></p>
+<p>（-j1后面是线程数。第一次编译推荐用单线程，国内请尽量全局科学上网）即可开始编译你要的固件了。编译完成后固件输出在/lede/bin/targets</p>
 <h3 id="以后二次编译："><a href="#以后二次编译：" class="headerlink" title="以后二次编译："></a>以后二次编译：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br><span class="line">rm -rf ./tmp &amp;&amp; rm -rf .config</span><br><span class="line">make menuconfig</span><br><span class="line">make -jn V=s</span><br></pre></td></tr></table></figure>
 <h3 id="把以下地址加入自定义gfwlist可提高成功率："><a href="#把以下地址加入自定义gfwlist可提高成功率：" class="headerlink" title="把以下地址加入自定义gfwlist可提高成功率："></a>把以下地址加入自定义gfwlist可提高成功率：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h12.io</span><br><span class="line">go.starlark.net</span><br><span class="line">golang.org</span><br><span class="line">honnef.co</span><br></pre></td></tr></table></figure>
 <h3 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS:"></a>TIPS:</h3><p>编译切换内核：<br>打开LEDE目录/target/linux/架构/Makefile<br>KERNEL_PATCHVER:=4.9<br>具体支持内核版本<br>include/kernel-version.mk</p>
 <p>源码回退：<br>git log                        查看源码更新日志<br>git reset –hard HEAD^         回退到上个版本<br>git reset –hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前<br>git reset –hard commit_id     退到/进到 指定commit的sha码（可到大雕源码地址直接查询）</p>
 <p>files大法：就是把你 改好的配置 直接编译进固件<br>这样做的好处就是升级不需要保留配置，或者恢复出厂设置，缺省值就是你自己设置好的配置<br>固化某配置教程例子：<br>1.提取路由固件下的\etc\config\network<br>2.在编译机LEDE根目录下创建files目录<br>3.拷贝到\files\etc\config\network<br>这样编译完，network就是你自己配置好的network，注意提取的文件路径和权限要一致</p>
-<p>一些常用的配置，路由器路径</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x 1 jlong0983 jlong0983   512 Apr 11 11:28 files</span><br><span class="line">drwxr-xr-x    1 root     root          1024 Apr 11 06:00 etc</span><br><span class="line">drwxr-xr-x    1 root     root          3072 Apr  9 14:15 config</span><br><span class="line">-rw-------    1 root     root          5790 Apr  9 11:10 firewall</span><br><span class="line">-rw-------    1 root     root           639 Mar 21 14:16 network</span><br><span class="line">-rw-------    1 root     root           754 Apr  7 09:20 ddns</span><br><span class="line">-rw-------    1 root     root           187 Apr 11 14:54 adbyby</span><br><span class="line">-rw-------    1 root     root           245 Apr 11 14:53 pptpd</span><br><span class="line">-rw-------    1 root     root           161 Apr 11 14:50 sfe</span><br><span class="line">-rw-------    1 root     root           158 Apr 16 15:42 flowoffload</span><br><span class="line">-rw-------    1 root     root          1101 Apr 16 16:22 shadowsocksr</span><br><span class="line">-rw-r--r--    1 root     root            11 Apr 16 15:46 google_fu_mode</span><br></pre></td></tr></table></figure>
+<p>一些常用的配置，路由器路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x 1 jlong0983 jlong0983   512 Apr 11 11:28 files</span><br><span class="line">drwxr-xr-x    1 root     root          1024 Apr 11 06:00 etc</span><br><span class="line">drwxr-xr-x    1 root     root          3072 Apr  9 14:15 config</span><br><span class="line">-rw-------    1 root     root          5790 Apr  9 11:10 firewall</span><br><span class="line">-rw-------    1 root     root           639 Mar 21 14:16 network</span><br><span class="line">-rw-------    1 root     root           754 Apr  7 09:20 ddns</span><br><span class="line">-rw-------    1 root     root           187 Apr 11 14:54 adbyby</span><br><span class="line">-rw-------    1 root     root           245 Apr 11 14:53 pptpd</span><br><span class="line">-rw-------    1 root     root           161 Apr 11 14:50 sfe</span><br><span class="line">-rw-------    1 root     root           158 Apr 16 15:42 flowoffload</span><br><span class="line">-rw-------    1 root     root          1101 Apr 16 16:22 shadowsocksr</span><br><span class="line">-rw-r--r--    1 root     root            11 Apr 16 15:46 google_fu_mode</span><br></pre></td></tr></table></figure></p>
 <p>如果无效请make clean或者删除/lede/build_dir/target架构/autocore-1（编译其他失败同理）</p>
 
       
