@@ -146,19 +146,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-win server 2019 安装WSL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-win server 2019 安装 WSL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/win server 2019 安装WSL/">win server 2019 安装WSL</a>
+      <a class="article-title" href="/2019/05/09/win server 2019 安装 WSL/">win server 2019 安装 WSL</a>
     </h1>
   
 
         
-        <a href="/2019/05/09/win server 2019 安装WSL/" class="archive-article-date">
+        <a href="/2019/05/09/win server 2019 安装 WSL/" class="archive-article-date">
   	<time datetime="2019-05-09T07:20:03.426Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
@@ -166,14 +166,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="win-server-2019-安装WSL"><a href="#win-server-2019-安装WSL" class="headerlink" title="win server 2019 安装WSL"></a>win server 2019 安装WSL</h1><p>先打开WSL功能,重启<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</span><br></pre></td></tr></table></figure></p>
+        <h1 id="win-server-2019-安装-WSL"><a href="#win-server-2019-安装-WSL" class="headerlink" title="win server 2019 安装 WSL"></a>win server 2019 安装 WSL</h1><p>先打开WSL功能,重启<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</span><br></pre></td></tr></table></figure></p>
 <p>下载你想要的发行版<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://aka.ms/wsl-ubuntu-1804</span><br><span class="line">https://aka.ms/wsl-ubuntu-1604</span><br><span class="line">https://aka.ms/wsl-debian-gnulinux</span><br><span class="line">https://aka.ms/wsl-kali-linux</span><br><span class="line">https://aka.ms/wsl-opensuse-42</span><br><span class="line">https://aka.ms/wsl-sles-12</span><br></pre></td></tr></table></figure></p>
-<p>重命名并解压/<distro>.appx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Rename-Item ~/Ubuntu.appx ~/Ubuntu.zip</span><br><span class="line">Expand-Archive ~/Ubuntu.zip ~/Ubuntu</span><br></pre></td></tr></table></figure></distro></p>
-<p>进入解压出来的文件夹，运行/<distro>.exe开始安装</distro></p>
+<p>重命名并解压distro.appx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Rename-Item ~/Ubuntu.appx ~/Ubuntu.zip</span><br><span class="line">Expand-Archive ~/Ubuntu.zip ~/Ubuntu</span><br></pre></td></tr></table></figure></p>
+<p>进入解压出来的文件夹，运行distro.exe开始安装</p>
 <p>加入环境变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$userenv</span> = [System.Environment]::GetEnvironmentVariable(<span class="string">"Path"</span>, <span class="string">"User"</span>)</span><br><span class="line">[System.Environment]::SetEnvironmentVariable(<span class="string">"PATH"</span>, <span class="variable">$userenv</span> + <span class="string">"C:\Users\Administrator\Ubuntu"</span>, <span class="string">"User"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>安装完成，打开bash就能进入默认的WSL发行版</p>
 <h1 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h1><p>列出所有发行版<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wslconfig /l</span><br></pre></td></tr></table></figure></p>
-<p>卸载一个发行版<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wslconfig /l &lt;发行版&gt;</span><br></pre></td></tr></table></figure></p>
+<p>卸载一个发行版<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wslconfig /u &lt;发行版&gt;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -186,7 +186,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/win server 2019 安装WSL/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/09/win server 2019 安装 WSL/">展开全文 >></a>
         </p>
       
 
